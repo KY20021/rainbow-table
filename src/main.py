@@ -21,6 +21,20 @@ def write_to_json(data, filename: str):
     with open(filename, "w") as f:
         json.dump(data, f)
 
+def find_hash_and_return_password(hash: str)
+    """
+    Find the password corresponding to a given MD5 hash from a predefined dictionary.
+    :param hash: The MD5 hash to find the password for.
+    :return: The password corresponding to the given hash, or None if not found.
+    """
+    with open("hashes.json", "r") as f:
+        hash_dict = json.load(f)
+
+    for password, h in hash_dict.items():
+        if h == hash:
+            return password
+    return None
+
 
 if __name__ == "__main__":
     """
@@ -57,3 +71,12 @@ if __name__ == "__main__":
     # print(
     #     f"MD5 hash of '{test_string}' matches expected hash: {the_hash == expected_hash}"
     # )
+
+
+    # Example usage of find_hash_and_return_password
+    # test_hash = "f03aa483677e92b76db5a4e591f2c1a1"  # Replace with the hash you want to find
+    # password = find_hash_and_return_password(test_hash)
+    # if password:
+    #     print(f"Password found for hash '{test_hash}': {password}")
+    # else:
+    #     print(f"No password found for hash '{test_hash}'")
